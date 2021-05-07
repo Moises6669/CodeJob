@@ -1,9 +1,9 @@
 const express = require('express');
 const route = express.Router();
 
-route.get('/',(req,res)=>{
-    res.send('Todo bien');
-})
+const controllers = require('../controllers/home.controller');
+
+route.get('/', controllers.mostrarTrabajos);
 
 
 module.exports = route;
