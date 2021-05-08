@@ -1,4 +1,4 @@
-const exphbs = require('express-handlebars').create({ defaultLayout: 'layout' });
+const exphbs = require('express-handlebars').create({ defaultLayout: 'layout', helpers: require('./helpers/handlebars')});
 const cookieParse = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
