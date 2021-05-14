@@ -7,6 +7,8 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
+const bodyparser = require('body-parser');
+
 
 //enviroments
 require('dotenv').config();
@@ -21,6 +23,8 @@ app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'handlebars');
 
 //middlewares
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended:true}));
 app.use(morgan('dev'));
 app.use(cookieParse());
 app.use(session({

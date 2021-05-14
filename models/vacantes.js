@@ -44,9 +44,12 @@ const vacanteSchema = new Schema({
     }
 });
 
-vacanteSchema.pre('save', (next) => {
+vacanteSchema.pre('save', function(next) {
+
+    // crear la url
     const url = slug(this.titulo);
     this.url = `${url}-${shortId.generate()}`;
+
     next();
 })
 
