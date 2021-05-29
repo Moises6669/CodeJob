@@ -6,8 +6,13 @@ const vacanteController = require('../controllers/vacantesController');
 
 route.get('/', controllers.mostrarTrabajos);
 
+//Crear vacante
 route.get('/vacante/nueva',vacanteController.formularioNuevaVacante);
 
 route.post('/vacante/nueva',vacanteController.agregarVacante);
+
+//Mostrar vacante
+
+route.get('/vacantes/:url',vacanteController.mostrarVacantes);
 
 module.exports = route;
