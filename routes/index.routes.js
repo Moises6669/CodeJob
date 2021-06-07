@@ -12,7 +12,9 @@ route.get('/vacante/nueva',vacanteController.formularioNuevaVacante);
 route.post('/vacante/nueva',vacanteController.agregarVacante);
 
 //Mostrar vacante
-
 route.get('/vacantes/:url',vacanteController.mostrarVacantes);
+
+//Editar vacante
+route.get('/vacantes/editar/:url',vacanteController.formEditarVacante)
 
 module.exports = route;

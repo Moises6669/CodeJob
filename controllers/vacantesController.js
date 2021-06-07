@@ -1,3 +1,4 @@
+
 const Vacantes = require("../models/vacantes");
 
 exports.formularioNuevaVacante = (req, res) => {
@@ -36,7 +37,27 @@ exports.mostrarVacantes = async (req, res, next) => {
     view_ubicasion: vacante.ubicacion,
     view_contrato: vacante.contrato,
     view_descripcion: vacante.descripcion,
-    view_skills:vacante.skills,
+    view_skills: vacante.skills,
     barra: true
   });
+}
+
+exports.formEditarVacante = async (req, res, next) => {
+
+  const { url } = req.params;
+
+  const vacante = await Vacantes.findOne({ url });
+
+  if(!url) return next();
+
+  res.render('editar-vacantes',{
+    vacante,
+    nombrePagina: `Editar - ${vacante.titulo}`
+  })
+
+  // url ? res.render('editar-vacante', {
+  //   vacante,
+  //   nombrePagina: `Editar - ${vacante.titulo}`
+  // }) : next();
+
 }
